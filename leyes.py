@@ -1,0 +1,31 @@
+import sqlite3 
+
+Conexion = sqlite3.connect('leyes.db')
+
+#creo un cursor para almacenar la información en memoria
+Cursor = Conexion.cursor() 
+
+#creando tabla leyes
+Cursor.execute("""
+    CREATE TABLE IF NOT EXISTS leyes (
+    nro_ley INTEGER PRIMARY KEY,
+    fecha DATE,
+    jurisdiccion TEXT,
+    descripcion TEXT,
+    categoria TEXT
+    )
+ """)
+
+#creando una lista de tuplas con la información que quiero mostrar en los campos creados anteriormente
+Data_Leyes = [
+    ('27555','14/08/2020','NACIONAL','ESTABLECER LOS PRESUPUESTOS LEGALES MINIMOS PARA LA REGULACION DE LA MODALIDAD DE TELETRABAJO EN AQUELLAS ACTIVIDADES, QUE POR SU NATURALEZA Y PARTICULARES CARACTERISTICAS LO PERMITAN','LABORAL'),
+    ('20744','11/09/1974','NACIONAL','REGULA LAS RELACIONES LABORALES DE LOS TRABAJADORES QUE SE ENCUENTRAN BAJO RELACION DE DEPENDENCIA, INDICA CUALES SON LAS CARACTERISTICAS QUE DEBE REUNIR UN CONTRATO LABORAL','LABORAL'),
+    ('7642','25/11/1987','PROVINCIAL','DETERMINA LAS CONDICIONES PARA EL EJERCICIO PROFESIONAL DE CIENCIAS INFORMÁTICAS, CONSTITUYE EL CONSEJO PROFESIONAL DE CIENCIAS INFORMÁTICAS DE LA PROVINCIA DE CÓRDOBA, DETERMINA UN CÓDIGO DE ÉTICA (DEBERES PARA PROFESIONALES Y PARA CLIENTES)','DERECHO INFORMATICO')
+]
+
+#inserto los datos en la tabla
+Cursor.executemany("INSERT INTO leyes VALUES(?,?,?,?,?)", Data_Leyes)
+
+Conexion.commit()
+
+Conexion.close()
