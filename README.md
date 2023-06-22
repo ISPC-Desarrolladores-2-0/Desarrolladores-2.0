@@ -1,6 +1,6 @@
 # Desarrolladores-2.0
 
-En este repositorio está alojado el Proyecto Integrador que corresponde al Modulo Programación Inicial - COHOERTE 2023 (ISPC).
+En este repositorio está alojado el Proyecto Integrador que corresponde al Modulo Programación Inicial - TSDWAD - COHOERTE 2023 (ISPC).
 
 # Integrantes
 
